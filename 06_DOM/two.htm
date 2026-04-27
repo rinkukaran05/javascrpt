@@ -1,1 +1,70 @@
+<!-- ======================= DOM ELEMENT CREATION ======================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Creation</title>
+</head>
 
+<body style="background-color: #212121; color: white;">
+
+</body>
+
+<script>
+
+    // ======================= CREATE ELEMENT =======================
+
+    // Create a new div element (not yet added to DOM)
+    const div = document.createElement('div')
+    console.log(div);
+
+
+    // ======================= ADD ATTRIBUTES =======================
+
+    // Adding class
+    div.className = "main"
+
+    // Adding id (random number)
+    div.id = Math.floor(Math.random() * 100 + 1)
+
+    // General way to set attributes
+    div.setAttribute("title", "generated title")
+
+
+    // ======================= ADD STYLES =======================
+
+    div.style.backgroundColor = "green"
+    div.style.color = "red"
+    div.style.padding = "10px"
+    div.style.borderRadius = "8px"
+
+
+    // ======================= ADD TEXT =======================
+
+    // Method 1 (less optimized)
+    // div.innerText = "Rinku Karan"
+
+    // Method 2 (recommended -> more efficient)
+    const addText = document.createTextNode("Pritam Ghosh")
+    div.appendChild(addText)
+
+
+    // ======================= ATTACH TO DOM =======================
+
+    // Add the created div to body
+    document.body.appendChild(div)
+
+
+
+    // ======================= IMPORTANT NOTES =======================
+
+    // 1. createElement() -> creates element in memory (not visible yet)
+    // 2. appendChild() -> adds element to DOM (visible on page)
+    // 3. setAttribute() -> best for adding attributes
+    // 4. createTextNode() -> more optimized than innerText
+    // 5. Styles can be added using .style property
+
+</script>
+
+</html>
