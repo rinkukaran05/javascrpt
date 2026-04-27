@@ -1,0 +1,97 @@
+<!-- ======================= DOM LIST MANIPULATION ======================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM List</title>
+</head>
+
+<body style="background-color: #212121; color: white;">
+
+    <!-- Initial List -->
+    <ul class="language">
+        <li>javascript</li>
+    </ul>
+
+</body>
+
+<script>
+
+    // ======================= ADD ELEMENT (BASIC WAY) =======================
+
+    function addLang(langName) {
+
+        const li = document.createElement("li")
+
+        //  Less optimized (uses HTML parsing)
+        li.innerHTML = `${langName}`
+
+        const ul = document.querySelector(".language")
+
+        ul.appendChild(li)
+    }
+
+    addLang("cpp")
+    addLang("python")
+
+
+
+    // ======================= ADD ELEMENT (OPTIMIZED WAY) =======================
+
+    function addOptiLang(langName) {
+
+        const li = document.createElement("li")
+
+        // More efficient (no HTML parsing)
+        li.appendChild(document.createTextNode(langName))
+
+        document.querySelector(".language").appendChild(li)
+    }
+
+    addOptiLang("golang")
+
+
+
+    // ======================= EDIT ELEMENT =======================
+
+    // Replace second item
+    const secondLang = document.querySelector("li:nth-child(2)")
+
+    const newLi = document.createElement("li")
+    newLi.textContent = "mojo"
+
+    secondLang.replaceWith(newLi)
+
+
+
+    // Another way (replace using outerHTML)
+    const firstLang = document.querySelector("li:first-child")
+
+    //  This recreates the element (less control)
+    firstLang.outerHTML = "<li>TypeScript</li>"
+
+
+
+    // ======================= REMOVE ELEMENT =======================
+
+    // Select last element
+    const lastLang = document.querySelector("li:last-child")
+
+    // Remove it
+    lastLang.remove()
+
+
+
+    // ======================= IMPORTANT NOTES =======================
+
+    // 1. innerHTML -> slower, parses HTML
+    // 2. createTextNode() -> faster & safer
+    // 3. appendChild() -> adds element to DOM
+    // 4. replaceWith() -> replaces existing element
+    // 5. outerHTML -> replaces entire element (not always preferred)
+    // 6. remove() -> deletes element from DOM
+
+</script>
+
+</html>
