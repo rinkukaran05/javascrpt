@@ -1,0 +1,93 @@
+<!-- ======================= DOM TRAVERSAL ======================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Practice</title>
+</head>
+
+<body style="background-color: #212121; color: white;">
+
+    <!-- Parent Element -->
+    <div id="hello" class="parent">
+
+        <!-- Child Elements -->
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+
+    </div>
+
+    <script>
+
+        // ======================= SELECTING ELEMENT =======================
+
+        // Select parent using class
+        const parent = document.querySelector(".parent")
+        console.log(parent); // prints full parent div
+
+
+        // Alternative: select using ID
+        // const parent = document.getElementById("hello")
+
+
+        // ======================= CHILD ELEMENTS =======================
+
+        // .children → returns HTMLCollection (array-like, NOT actual array)
+        console.log(parent.children);
+
+        // Access specific child (index starts from 0)
+        console.log(parent.children[1].innerHTML); // Tuesday
+
+
+        // Loop through children
+        for (let i = 0; i < parent.children.length; i++) {
+            console.log(parent.children[i].innerHTML);
+        }
+
+
+        // Modify style of specific child
+        parent.children[1].style.color = "orange"
+
+
+        // ======================= FIRST & LAST CHILD =======================
+
+        console.log(parent.firstElementChild); // Monday
+        console.log(parent.lastElementChild);  // Thursday
+
+
+        // ======================= SIBLING & PARENT =======================
+
+        const dayOne = document.querySelector(".day")
+
+        console.log(dayOne); // First .day element (Monday)
+
+        // Next sibling element
+        console.log(dayOne.nextElementSibling); // Tuesday
+
+        // Parent element
+        console.log(dayOne.parentElement); // .parent div
+
+
+        // ======================= MODIFY CONTENT =======================
+
+        parent.children[1].innerHTML = "hello"
+        console.log(parent.children[1].innerHTML);
+
+
+        // ======================= NODES =======================
+
+        // childNodes → includes text nodes, comments, etc.
+        console.log("NODES:", parent.childNodes);
+
+        // Difference:
+        // .children → only element nodes
+        // .childNodes → includes text (like spaces, line breaks)
+
+
+    </script>
+
+</body>
+</html>
