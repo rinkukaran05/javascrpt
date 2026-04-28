@@ -1,0 +1,25 @@
+body{
+    text-align:center;
+    margin-top: 100px;
+}
+.button{
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    margin:10px;
+    border:2px solid black;
+    cursor: pointer;
+
+}
+#grey{                      
+    background-color: grey;
+}
+#white{
+    background-color: white;
+}
+#blue{
+    background-color: blue;
+}
+#yellow{
+    background-color: yellow;
+}
