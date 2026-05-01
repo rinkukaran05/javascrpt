@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page Title -->
+    <title>GitHub API Project</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+
+    // Creating a new XMLHttpRequest object
+    const xhr = new XMLHttpRequest();
+
+    // Initializing request
+    // GET = Requesting data from server
+    // URL = GitHub API endpoint
+    xhr.open('GET', "https://api.github.com/users/rinkukaran05");
+
+    // This function runs whenever readyState changes
+    xhr.onreadystatechange = function () {
+
+        // Checking current state
+        console.log(xhr.readyState);
+
+        // readyState 4 means request is completed
+        if (xhr.readyState === 4) {
+
+            // Converting JSON string into JavaScript object
+            const data = JSON.parse(this.responseText);
+
+            // Printing followers count in console
+            console.log(data.followers);
+
+        }
+
+    }
+
+    // Sending request to server
+    xhr.send();
+
+</script>
+
+</html>
