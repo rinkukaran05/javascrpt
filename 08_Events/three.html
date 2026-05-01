@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Responsive website -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Chai aur Javascript</h1>
+
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+</body>
+
+<script>
+
+    // Function to print string and current timestamp
+    const sayDate = function(str){
+        console.log(str, Date.now());
+    }
+
+    
+    // setInterval runs function repeatedly after every 1 second
+    // "hi" is passed as parameter
+    const intervalId = setInterval(sayDate, 1000, "hi")
+
+
+    // clearInterval stops the interval
+    clearInterval(intervalId)
+
+</script>
+
+</html>
