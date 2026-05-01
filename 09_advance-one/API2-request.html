@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GitHub Card</title>
+
+  <style>
+
+    body{
+      background-color: #212121;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial;
+    }
+
+    .card{
+      background-color: #333;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 250px;
+    }
+
+    img{
+      width: 120px;
+      border-radius: 50%;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="card">
+      <img id="photo" src="" alt="">
+      <h2 id="name"></h2>
+      <p id="followers"></p>
+       <p id="following"></p>
+  </div>
+
+</body>
+<script>
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', "https://api.github.com/users/rinkukaran05");
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4){
+            const data = JSON.parse(this.responseText)
+            document.getElementById('photo').src = data.avatar_url;
+            document.getElementById('name').innerHTML = data.login;
+            document.getElementById('followers').innerHTML=`followers:${data.followers}`;
+            document.getElementById('following').innerHTML=`following:${data.following}`;
+
+        
+        }
+    }
+
+    xhr.send()
+</script>
+</html>
