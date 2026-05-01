@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HTML Events</title>
+</head>
+
+<body style="background-color: #414141; color: aliceblue;">
+
+    <h2>Amazing Images</h2>
+
+    <div>
+        <ul id="images">
+
+            <!-- Each image has a unique id -->
+            <li>
+                <img width="200px"
+                id="photoshop"
+                src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                alt="photoshop">
+            </li>
+
+            <li>
+                <img width="200px"
+                id="japan"
+                src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                alt="japan">
+            </li>
+
+            <li>
+                <img width="200px"
+                id="river"
+                src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                alt="river">
+            </li>
+
+            <li>
+                <img width="200px"
+                id="owl"
+                src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                alt="owl">
+            </li>
+
+            <li>
+                <img width="200px"
+                id="prayer"
+                src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                alt="prayer">
+            </li>
+
+            <!-- Google link -->
+            <li>
+                <a style="color: aliceblue;"
+                href="https://google.com"
+                id="google">
+                Google
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+</body>
+
+<script>
+
+    // ======================================================
+    // onclick method (Old way to handle events)
+    // ======================================================
+
+    // document.getElementById('owl').onclick = function(){
+    //     alert("owl clicked")
+    // }
+
+
+    // ======================================================
+    // Older event methods
+    // ======================================================
+
+    // attachEvent()  --> Used in old Internet Explorer
+    // jQuery - on    --> Event handling method in jQuery
+
+
+    // ======================================================
+    // Important properties of Event Object
+    // ======================================================
+
+    // type              --> Type of event (click, keydown etc.)
+    // timeStamp         --> Time when the event occurred
+    // defaultPrevented  --> Checks whether default action is prevented
+
+    // target            --> Actual element that triggered the event
+    // currentTarget     --> Element where listener is attached
+
+    // clientX, clientY  --> Mouse position inside browser window
+    // screenX, screenY  --> Mouse position relative to screen
+
+    // altKey            --> Whether Alt key was pressed
+    // ctrlKey           --> Whether Ctrl key was pressed
+    // shiftKey          --> Whether Shift key was pressed
+
+    // keyCode           --> Key code of pressed keyboard key
+
+
+    // ======================================================
+    // Event Bubbling Example
+    // ======================================================
+
+    // Clicking anywhere inside ul will print this message
+
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+    // }, false)
+
+
+    // Clicking owl image:
+    // First owl event runs
+    // Then event bubbles up to ul
+
+    // document.getElementById('owl').addEventListener('click', function(e){
+
+    //     console.log("owl clicked");
+
+    //     // Stops event bubbling
+    //     e.stopPropagation()
+
+    // }, false)
+
+
+    // ======================================================
+    // preventDefault() Example
+    // ======================================================
+
+    // Normally clicking the link opens Google
+    // preventDefault() stops the default browser action
+
+    // document.getElementById('google').addEventListener('click',function(e){
+
+    //     // Stops link from opening
+    //     e.preventDefault();
+
+    //     // Stops bubbling
+    //     e.stopPropagation()
+
+    //     console.log("google clicked");
+
+    // }, false)
+
+
+
+    // ======================================================
+    // Event Delegation
+    // ======================================================
+
+    // Instead of adding event listeners to every image,
+    // we add only one listener to the parent ul
+
+    document.querySelector('#images').addEventListener('click', function(e){
+
+        // Shows which element was clicked
+        console.log(e.target.tagName);
+
+
+        // Check if clicked element is an image
+        if (e.target.tagName === 'IMG') {
+
+            // Prints clicked image id
+            console.log(e.target.id);
+
+
+            // Selects parent <li> of clicked image
+            let removeIt = e.target.parentNode
+
+
+            // Removes the whole li element
+            removeIt.remove()
+        }
+
+    })
+
+
+    // ======================================================
+    // Alternative remove method
+    // ======================================================
+
+    // removeIt.parentNode.removeChild(removeIt)
+
+</script>
+
+</html>
