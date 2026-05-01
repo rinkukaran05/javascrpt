@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>setTimeout and clearTimeout</title>
+</head>
+<body>
+  <h1>Chai aur Code</h1>
+ <button id="stop">Stop</button>
+</body>
+<script>
+const sayHitesh = function(){
+        console.log("Hitesh");
+    }
+ // Function to change heading text
+ const changeText = function(){
+// Selects h1 element and changes text
+        document.querySelector('h1').innerHTML = "Best JS Series"
+    }
+
+
+    // ======================================================
+    // setTimeout()
+    // ======================================================
+
+    // setTimeout runs a function ONLY ONE TIME
+    // after a specified delay
+
+    // Syntax:
+    // setTimeout(function, delay_in_milliseconds)
+
+    // 2000 ms = 2 seconds
+
+    const changeMe = setTimeout(changeText, 2000)
+
+
+    // ======================================================
+    // clearTimeout()
+    // ======================================================
+
+    // clearTimeout is used to stop/cancel setTimeout
+
+    // changeMe stores the timeout reference/id
+    // That reference is needed to cancel the timeout
+
+
+    document.querySelector('#stop').addEventListener('click', function(){
+
+        // Stops the timeout before execution
+        clearTimeout(changeMe)
+
+        console.log("STOPPED")
+    })
+
+
+    // ======================================================
+    // Flow of this program
+    // ======================================================
+
+    // 1. Page loads
+    // 2. setTimeout starts a 2 second timer
+    // 3. After 2 seconds -> changeText() runs
+    // 4. h1 text changes to "Best JS Series"
+    // 5. If user clicks STOP before 2 seconds,
+    //    clearTimeout cancels the timer
+
+</script>
+
+</html>
